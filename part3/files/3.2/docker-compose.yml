@@ -1,0 +1,11 @@
+version: '3.7'
+
+services:
+  publisher:
+    image: publisher
+    build: .
+    # stdin_open: true # docker run -i
+    # tty: true        # docker run -t
+    container_name: publisher
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock:ro

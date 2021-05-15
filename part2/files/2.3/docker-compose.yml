@@ -1,0 +1,19 @@
+version: '3.5'
+
+services:
+
+  example-backend:
+    image: example-backend
+    environment:
+      - REQUEST_ORIGIN=http://localhost:5000
+    container_name: example-backend
+    ports:
+      - 8080:8080
+
+  example-frontend:
+    image: example-frontend
+    environment:
+      - REACT_APP_BACKEND_URL=http://localhost:8080
+    container_name: example-frontend
+    ports:
+      - 5000:5000

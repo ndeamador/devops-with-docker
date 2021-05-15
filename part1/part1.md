@@ -240,4 +240,5 @@ Commands:
     docker run --rm -p 8080:8080 --name backend example-backend
 
 Result:
+
 ![1.14 result](./files/1.14.png)

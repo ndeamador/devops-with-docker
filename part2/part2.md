@@ -188,6 +188,7 @@ volumes:
 ```
 
 Result:
+
 ![2.7 result](./files/2.7/Capture.png)
 
 # 2.8
@@ -330,6 +331,7 @@ example-frontend:
 ```
 
 Result:
+
 ![2.10 result](./files/2.10/Capture.png)
 
 

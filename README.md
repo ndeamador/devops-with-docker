@@ -2,6 +2,6 @@
 
 Please, refer to the README files in each part for the exercise solutions:
 
-* [Part 1](https://github.com/ndeamador/devops-with-docker/blob/master/part1/part1.md)
-* [Part 2](https://github.com/ndeamador/devops-with-docker/blob/master/part2/part2.md)
-* [Part 3](https://github.com/ndeamador/devops-with-docker/blob/master/part3/part3.md)
+* [Part 1](https://github.com/ndeamador/devops-with-docker/blob/master/part1/README.md)
+* [Part 2](https://github.com/ndeamador/devops-with-docker/blob/master/part2/README.md)
+* [Part 3](https://github.com/ndeamador/devops-with-docker/blob/master/part3/README.md)

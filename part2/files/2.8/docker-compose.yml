@@ -1,0 +1,40 @@
+version: '3.5'
+
+services:
+  example-backend:
+    image: example-backend
+    container_name: example-backend
+    environment:
+      - REDIS_HOST=example-redis
+      - POSTGRES_HOST=example-postgres
+      - POSTGRES_PASSWORD=pgsafepw
+    depends_on:
+      - example-redis
+      - example-postgres
+
+  example-frontend:
+    image: example-frontend
+    container_name: example-frontend
+
+  example-redis:
+    image: redis
+    container_name: example-redis
+
+  example-postgres:
+    image: postgres
+    container_name: example-postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_PASSWORD: pgsafepw
+
+  example-proxy:
+    image: nginx
+    container_name: example-nginx
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf
+    ports:
+      - 80:80
+    # fix "host not found in upstream" error
+    # depends_on:
+    #   - example-frontend
+    #   - example-backend

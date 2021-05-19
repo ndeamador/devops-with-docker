@@ -3,7 +3,34 @@
 
 # 3.1
 
-Application in Heroku: https://ndeamador-devopsdocker-3-1.herokuapp.com/
+Application deployed in [GitHub](https://github.com/ndeamador/devops-with-docker/tree/master/part3/files/3.1/threepointone) and [Heroku](https://ndeamador-devopsdocker-3-1.herokuapp.com/) (Heroku might take a few seconds to wake up).
+
+GitHub Actions workflow:
+```yml
+name: 'Deploy to Heroku'
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Build, Push and Deploy to Heroku
+        if: ${{ github.event_name == 'push' && contains(github.event.head_commit.message, '#heroku-push')}}
+        id: heroku
+        uses: akhileshns/heroku-deploy@v3.12.12
+        with:
+          heroku_email: ${{ secrets.HEROKU_EMAIL }}
+          heroku_api_key: ${{ secrets.HEROKU_API_KEY }}
+          heroku_app_name: ${{ secrets.HEROKU_APP_NAME }}
+          usedocker: true
+          rollbackonhealthcheckfailed: true
+```
 
 Expected result:
 
@@ -127,6 +154,7 @@ CMD ["serve", "-s", "-l", "5000", "build"]
 ```
 
 Process execution user check:
+
 ![3.3 result](./files/3.3/Capture.png)
 
 # 3.4
@@ -236,7 +264,7 @@ CMD ["serve", "-s", "-l", "5000", "build"]
 
 ### Image size breakdown
 - Previous size (golang:alpine base image): `447MB`
-- Multi-stage size: `18 MB`
+- Multi-stage size: `18 MB` :heavy_check_mark:
 
 Dockerfile
 ```Dockerfile

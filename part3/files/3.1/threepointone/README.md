@@ -12,11 +12,8 @@ Deployed to [Docker Hub](https://hub.docker.com/repository/docker/ndeamador/devo
 
 Deployed to [Heroku](https://ndeamador-devopsdocker-3-1.herokuapp.com/)
 
-<br>
-
 
 ## Run Docker container:
----
 
 Run the command:
 
@@ -26,11 +23,34 @@ docker run --rm -p 3000:3000 ndeamador/devopswithdocker-1-15
 
 And visit http://localhost:3000/ in your browser.
 
-<br>
 
-## Development:
----
+## Local Development:
 
 As I have uploaded the application as a subfolder in the course repository, to modify the project you will have to clone the entire repository and initialize git in the app's folder (`/devops-with-docker/part3/files/3.1/threepointone`).
 
-When pushing changes to GitHub, GitHub Actions will automatically **deploy the app to Heroku** if the commit message includes the string `#heroku-push` and will **deploy the app to Docker Hub** if the commit message includes the string `#dockerhub-push`.
+### GitHub Actions conditional deployment:
+
+Add the following strings to the GitHub commit message:
+
+**To deploy the app to Heroku:**
+
+```
+#heroku-push
+```
+
+**To deploy the app to Docker Hub:**
+
+```
+#dockerhub-push
+```
+
+Note that the following secrets will have to be added to the GitHub Repositor:
+
+To deploy to Heroku:
+* HEROKU_EMAIL
+* HEROKU_API_KEY
+* HEROKU_APP_NAME
+
+To deploy to Docker Hub:
+* DOCKERHUB_USERNAME
+* DOCKERHUB_TOKEN

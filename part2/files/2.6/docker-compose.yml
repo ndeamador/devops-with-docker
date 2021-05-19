@@ -1,0 +1,46 @@
+version: '3.5'
+
+services:
+  example-backend:
+    image: example-backend
+    environment:
+      - REQUEST_ORIGIN=http://localhost:5000
+      - REDIS_HOST=example-redis
+      - POSTGRES_HOST=example-postgres
+      - POSTGRES_PASSWORD=pgsafepw
+      # - POSTGRES_USER=postgres # default: postgres
+      # - POSTGRES_DATABASE # default: postgres
+    container_name: example-backend
+    ports:
+      - 8080:8080
+    depends_on:
+      - example-redis
+      - example-postgres
+
+  example-frontend:
+    image: example-frontend
+    environment:
+      - REACT_APP_BACKEND_URL=http://localhost:8080
+    container_name: example-frontend
+    ports:
+      - 5000:5000
+
+  example-redis:
+    image: redis
+    container_name: example-redis
+
+  example-postgres:
+    image: postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_PASSWORD: pgsafepw
+    container_name: example-postgres
+
+  example-admirer:
+    image: adminer
+    restart: always
+    ports:
+      - 8083:8080
+    environment:
+      - ADMINER_DESIGN=galkaev
+    container_name: example-admirer

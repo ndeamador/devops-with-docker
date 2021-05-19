@@ -242,3 +242,34 @@ Commands:
 Result:
 
 ![1.14 result](./files/1.14.png)
+
+# 1.15
+
+Repository: **https://hub.docker.com/repository/docker/ndeamador/devopswithdocker-1-15**
+
+To use, just enter the command underneath and visit `localhost:3000` in your browser.
+
+```
+docker run --rm -p 3000:3000 ndeamador/devopswithdocker-1-15
+```
+
+# 1.16
+
+Commands:
+```
+heroku container:login
+
+docker pull devopsdockeruh/heroku-example
+
+docker tag devopsdockeruh/heroku-example registry.heroku.com/ndeamador-devopsdocker-1-16/web
+
+docker push registry.heroku.com/ndeamador-devopsdocker-1-16/web
+
+heroku container:release web -a ndeamador-devopsdocker-1-16
+```
+
+url: **https://ndeamador-devopsdocker-1-16.herokuapp.com/**
+
+> I might remove the project from Heroku in the future as free accounts are limited to 5 applications. Here is proof of the working deployment:
+
+![1.16 result](./files/1.16.png)

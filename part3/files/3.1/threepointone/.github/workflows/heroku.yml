@@ -1,0 +1,30 @@
+name: 'Deploy to Heroku'
+
+# https://github.com/marketplace/actions/deploy-docker-image-to-heroku-app
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      # Deploy to Heroku
+      - name: Build, Push and Deploy to Heroku
+        if: ${{ github.event_name == 'push' && contains(github.event.head_commit.message, '#heroku-push')}} # run conditionally only when a pull request is merged (in this case, push meand pull request merge). https://docs.github.com/en/free-pro-team@latest/actions/reference/context-and-expression-syntax-for-github-actions
+        id: heroku
+        uses: akhileshns/heroku-deploy@v3.12.12
+        with:
+          heroku_email: ${{ secrets.HEROKU_EMAIL }}
+          heroku_api_key: ${{ secrets.HEROKU_API_KEY }}
+          heroku_app_name: ${{ secrets.HEROKU_APP_NAME }}
+          usedocker: true
+          # dockerfile_path: '.' # set the path to the folder where the Dockerfile is located
+          # options: '' # Docker Build Options
+          # formation: '' # Docker Dyno Formation. By default is web
+          rollbackonhealthcheckfailed: true # rollback to previous (working) version if healthcheck fails.
+

@@ -346,3 +346,9 @@ USER appuser
 EXPOSE 4000
 CMD ["npm", "start"]
 ```
+
+# 3.8
+
+Kubernetes diagram:
+
+![3.8 diagram](./files/3.8/diagram.svg)

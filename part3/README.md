@@ -263,7 +263,7 @@ CMD ["serve", "-s", "-l", "5000", "build"]
 ## Backend
 
 ### Image size breakdown
-- Previous size (golang:alpine base image): `447MB`
+- Previous size (golang:alpine base image): `447 MB`
 - Multi-stage size: `18 MB` :heavy_check_mark:
 
 Dockerfile

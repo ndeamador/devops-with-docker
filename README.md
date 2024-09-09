@@ -1,12 +1,9 @@
 # Coursework for [**DevOps with Docker**](https://devopswithdocker.com/) by the **University of Helsinki**.
 
-<details>
-  <summary>Certificate (9 ECTS Credits)</summary>
-
+## Certificate
   [Link to certificate in University of Helsinki's website](https://studies.cs.helsinki.fi/stats/api/certificate/docker2021/en/a813eeac7dbbc0866eb2a37281f23124)
 
   ![Full Stack Certificate](/certificate-devops.png)
-</details>
 
 <br>
 Please, refer to the README files in each part for the exercise solutions:
